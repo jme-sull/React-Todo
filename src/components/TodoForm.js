@@ -18,6 +18,7 @@ class ToDoForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.addToDo(this.state.input);
+        console.log(this.props.addToDo)
         this.setState({
             input: ''
         });
@@ -25,13 +26,14 @@ class ToDoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form style={{display: 'flex', flexDirection:'column', width: '20%'}} onSubmit={this.handleSubmit}>
                 <input
                     type='text'
                     name='item'
                     value={this.state.input}
                     onChange={this.handleInputChange}
                     />
+                    <button style={{width:'5rem', margin: '1%'}}>Submit</button>
             </form>
         )
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
@@ -18,11 +18,6 @@ const ToDoItems = [
 ];
 
 
-
-
-
-
-
 class App extends React.Component {
  
   constructor(){
@@ -34,17 +29,16 @@ class App extends React.Component {
   }
 
   addToDo = task => {
-    const newToDo = {
+    let newToDo = {
       task: task,
       id: new Date(),
       completed: false
-    };
+    }
+    console.log(newToDo)
 
     this.setState({
-      ToDoItems: 'banana'
+      ToDoItems: [...this.state.ToDoItems, newToDo]
     })
-
-    console.log(ToDoItems)
    
   }
 
@@ -56,7 +50,7 @@ class App extends React.Component {
         <h3>Add Task</h3>
         <TodoForm addToDo={this.addToDo} />
         <h3>Current Tasks</h3>
-        <TodoList ToDoItems={ToDoItems}/>
+        <TodoList ToDoItems={this.state.ToDoItems}/>
         
       </div>
     );
